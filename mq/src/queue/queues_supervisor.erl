@@ -1,5 +1,5 @@
 -module('queues_supervisor').
--export([start/0,init/1,start_queue/1, stop_queue/1]).
+-export([start/0,init/1,start_queue/1, stop_queue/1,add_listener/2]).
 -behavior(supervisor).
 
 
@@ -7,9 +7,9 @@ start() ->
     supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
 
-init([]) -> UsrChild = {sys_queue,{queue_worker, start, [sys_queue]},
+init([]) -> SysQueue = {sys_queue,{queue_worker, start, [sys_queue]},
             permanent, 2000, worker, [queue_worker]},
-            {ok,{{one_for_one,1,1}, [UsrChild]}}.
+            {ok,{{one_for_one,1,1}, [SysQueue]}}.
 
 
 start_queue(QueueName) ->
@@ -19,3 +19,5 @@ start_queue(QueueName) ->
 
 
 stop_queue(QueueName) -> supervisor:terminate_child(?MODULE, QueueName).
+
+add_listener(Queue, Listener) -> gen_server:cast(Queue,{add_listener,Listener}).
