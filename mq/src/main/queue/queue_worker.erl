@@ -33,4 +33,3 @@ handle_cast({new_message,Message},#queue{listeners=[]} = Queue) -> {noreply, Que
 handle_cast({new_message,Message},#queue{listeners=[H|_]} = Queue) ->
     H ! Message,
     {noreply, Queue}.
-

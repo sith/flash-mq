@@ -1,5 +1,5 @@
 -module('queues_supervisor').
--export([start/0,init/1,start_queue/1, stop_queue/1,add_listener/2]).
+-export([start/0, init/1, start_queue/1, stop_queue/1, add_listener/2, is_queue_alive/1]).
 -behavior(supervisor).
 
 
@@ -21,3 +21,16 @@ start_queue(QueueName) ->
 stop_queue(QueueName) -> supervisor:terminate_child(?MODULE, QueueName).
 
 add_listener(Queue, Listener) -> gen_server:cast(Queue,{add_listener,Listener}).
+
+
+is_queue_alive(QueueName) ->
+    try process_info(whereis(QueueName)) of
+       Val -> case Val of
+                    undefined -> false;
+                    _ -> true
+              end
+    catch
+        error:badarg -> false
+    end.
+
+
