@@ -10,8 +10,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>mq</module>
+        <!--<module>mq</module>-->
         <module>simple-client</module>
+        <module>mq-server</module>
     </modules>
 
 

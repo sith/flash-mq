@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>flash-mq</artifactId>
+        <groupId>org.sith</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>mq_server</artifactId>
+    <packaging>pom</packaging>
+
+    <name>mq_server</name>
+
+    <modules>
+        <module>mq_server_otp</module>
+        <module>mq_server_release</module>
+    </modules>
+
+
+
+
+</project>

@@ -2,7 +2,7 @@
 -export([ start / 1 , stop / 1 ]) .
 -export([ terminate / 2 , handle_cast / 2 ,init/1]) .
 -behavior(gen_server) .
--include_lib("mq/include/queue.hrl").
+-include_lib("mq_server_otp/include/queue.hrl").
 
 %% Start/Stop
 start (QueueName) ->

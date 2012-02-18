@@ -7,6 +7,5 @@
    {registered, ${REGISTERED}},
    {included_applications, []},
    {applications, [kernel, stdlib,sasl]},
-   {env, []},
    {mod, {mq_server,[]}},
    {start_phases, []}]}.
